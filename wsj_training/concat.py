@@ -2,7 +2,6 @@ OUTPUT= "concatstr.txt"
 TOTAL = 2000
 
 filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL)]
-print(filenames)
 
 concatstr = ""
 for fn in filenames:
