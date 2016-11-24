@@ -32,11 +32,6 @@ print(organizations.most_common(10))
 print(people.most_common(10))
 print(locations.most_common(10))
 
-# Go through the data and match on all instances of <ENAMEX TYPE=t>d</ENAMEX> 
-# For each TYPE, t, create a dict to hold members of that type.
-# For each tag with pair (t, d) put the data, d, into the relevant dict, t and increment the value.
-# Now we have sets that contain all of the known data, matched to the relevant
-# types, as well as the number of occurences of each.
 # We can use this to tag new data in the following way:
 #
 # FOR WORD Wn in UNTAGGED_DATA
@@ -50,3 +45,5 @@ print(locations.most_common(10))
 #         Tag Wn with the occurence with the highest value
 #     ELSE
 #          Tag Wn with the only tag it is assigned to. 
+
+
