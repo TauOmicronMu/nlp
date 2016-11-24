@@ -9,5 +9,4 @@ for fn in filenames:
         concatstr += f.read();
 
 with open(OUTPUT, "w") as f:
-    f.write(concatstr)
-    
+    f.write(concatstr)    
