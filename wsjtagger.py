@@ -5,7 +5,7 @@ import re
 from collections import Counter
 
 FP = "wsj_training/concatstr.txt"
-UFP = "wsj_untagged/concatstr.txt"
+UFP = "wsj_untagged/wsj_0001.txt"
 OFP = "output.txt"
 
 tag_map = {
@@ -45,47 +45,51 @@ def getScores(phrase):
 '''
 def tag(words):
     concatw = ""
-    i = 0
+    firstw = True
     for word in words:
         # Only add a space if there's >1 word
-        if i != 0:
-            concatw += word + " " 
+        if firstw:
+            concatw += word
+            firstw = False
         else:
-            concatw = word
+            concatw += " " + word
 
     scores = getScores(concatw)
     maxs = max(scores)
 
     if maxs == 0:
-        return (word, False) # If it doesn't fit, return untagged text.
+        return (concatw, False) # If it doesn't fit, return untagged text.
     if maxs == scores[0]:
-        return ('<ENAMEX TYPE="ORGANIZATION">' + word + '</ENAMEX>', True)
+        return ('<ENAMEX TYPE="ORGANIZATION">' + concatw + '</ENAMEX>', True)
     if maxs == scores[1]:
-        return ('<ENAMEX TYPE="PERSON">' + word + '</ENAMEX>', True)
+        return ('<ENAMEX TYPE="PERSON">' + concatw + '</ENAMEX>', True)
     if maxs == scores[2]:
-        return ('<ENAMEX TYPE="LOCATION">' + word + '</ENAMEX>', True)
+        return ('<ENAMEX TYPE="LOCATION">' + concatw + '</ENAMEX>', True)
 
-'''
-    Given a list of words, attempt to tag phrases of length n, once
-    the end of the list is reached, attempt to tag phrases of length
-    n-1 and so on until n == 0.
-'''
-def ntag(words, n, currpos=0):
-    # Terminate if there aren't enough words to form an n-length phrase.
-    if currpos >= len(words) - 1 - n:
-        print("Only ever got here")
-        return ntag(words, n-1, 0)
-    # Try to tag everything from [currpos:currpos+n+1] 
-        ws = " ".join(words[currpos:currpos + n + 1])
-        print("ws: %s" %ws)
-        tws = tag(ws)
-        if tag(ws)[1]: # If the given words were tagged...
-            del words[currpos:currpos + n + 1] # Remove all the used words
-            words[currpos] = tws[0] # Update the array with the tagged data
-            return ntag(words, n, currpos + n + 1)
-        # If the given words weren't tagged...
-        return ntag(words, n, currpos + 1) # Just increment currpos
-            
+def ntag(words, n):
+    print("STARTED NTAG n: %s" %n)
+    print("WORDS GIVEN: %s" %words)
+    if n < 0:
+        return words
+    currpos = 0
+    # If there aren't enough words to form an n-length phrase,
+    # Terminate and run ntag on words and n-1.
+    while not (currpos >= len(words) -1 - n):
+        print("In while loop, currpos: %s, n: %s" %(currpos, (len(words)-1-n)))
+        # Try to tag everything from [currpos:currpos+n+1]
+        tws = tag(words[currpos:currpos+n+1])
+        print(tws[0])
+        if tws[1]: 
+            print("SUCCESSFUL TAG")
+            del words[currpos:currpos + n + 1] # Remove the used words
+            words[currpos] = tws[0] # Replace them with the tagged words
+            # Update currpos to the next untagged phrase
+            currpos = currpos + n + 1
+        else:
+            currpos += 1 # Just increment currpos
+    return ntag(words, n-1) # Termination step
+
+print(untagged_words)
 tagged_input = ntag(untagged_words, 3)
 
 with open(OFP, "w") as f:
