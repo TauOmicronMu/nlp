@@ -6,6 +6,7 @@ from collections import Counter
 
 FP = "wsj_training/concatstr.txt"
 UFP = "wsj_untagged/concatstr.txt"
+OFP = "output.txt"
 
 tag_map = {
     "ORGANIZATION": "ORG",
@@ -71,4 +72,5 @@ tagged_input = ""
 for word in untagged_words:
        tagged_input += tag(word) + " "
 
-print(tagged_input)
+with open(OFP, "w") as f:
+    f.write(tagged_input)
