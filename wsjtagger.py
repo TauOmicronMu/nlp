@@ -51,26 +51,38 @@ with open(UFP, "r") as f:
 
 untagged_words = re.findall(r'\w+', untagged_data)
 
-def tag(text):
-    organizations_score = organizations[text]
-    people_score = people[text]
-    locations_score = locations[text]
+def getScores(phrase):
+    return (organizations[phrase], people[phrase], locations[phrase])
 
-    maxs = max(organizations_score, people_score, locations_score)
-    
+'''
+    Given a word or list of words, tag them appropriately or 
+    return the word(s) if no tags apply to them.
+'''
+def tag(words):
+    concatw = ""
+    i = 0
+    for word in words:
+        # Only add a space if there's >1 word
+        if i != 0:
+            concatw += word + " " 
+        else:
+            concatw = word
+
+    scores = getScores(concatw)
+    maxs = max(scores)
+
     if maxs == 0:
-        return text # If it doesn't fit, return untagged text.
-
-    if maxs == organizations_score:
-        return '<ENAMEX TYPE="ORGANIZATION">' + text + '</ENAMEX>'
-    if maxs == people_score:
-        return '<ENAMEX TYPE="PERSON">' + text + '</ENAMEX>'
-    if maxs == locations_score:
-        return '<ENAMEX TYPE="LOCATION">' + text + '</ENAMEX>'
+        return word # If it doesn't fit, return untagged text.
+    if maxs == scores[0]:
+        return '<ENAMEX TYPE="ORGANIZATION">' + word + '</ENAMEX>'
+    if maxs == scores[1]:
+        return '<ENAMEX TYPE="PERSON">' + word + '</ENAMEX>'
+    if maxs == scores[2]:
+        return '<ENAMEX TYPE="LOCATION">' + word + '</ENAMEX>'
 
 tagged_input = ""
 for word in untagged_words:
-       tagged_input += tag(word) + " "
+       tagged_input += tag([word]) + " "
 
 with open(OFP, "w") as f:
     f.write(tagged_input)
