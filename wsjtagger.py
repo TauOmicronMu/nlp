@@ -5,7 +5,7 @@ import re
 from collections import Counter
 
 FP = "wsj_training/concatstr.txt"
-UFP = "wsj_untagged/wsj_0001.txt"
+UFP = "wsj_untagged/concatstr.txt"
 OFP = "output.txt"
 
 tag_map = {
@@ -67,8 +67,6 @@ def tag(words):
         return ('<ENAMEX TYPE="LOCATION">' + concatw + '</ENAMEX>', True)
 
 def ntag(words, n):
-    print("STARTED NTAG n: %s" %n)
-    print("WORDS GIVEN: %s" %words)
     if n < 0:
         return words
     currpos = 0
@@ -78,9 +76,7 @@ def ntag(words, n):
         print("In while loop, currpos: %s, n: %s" %(currpos, (len(words)-1-n)))
         # Try to tag everything from [currpos:currpos+n+1]
         tws = tag(words[currpos:currpos+n+1])
-        print(tws[0])
         if tws[1]: 
-            print("SUCCESSFUL TAG")
             del words[currpos:currpos + n + 1] # Remove the used words
             words[currpos] = tws[0] # Replace them with the tagged words
             # Update currpos to the next untagged phrase
@@ -89,7 +85,6 @@ def ntag(words, n):
             currpos += 1 # Just increment currpos
     return ntag(words, n-1) # Termination step
 
-print(untagged_words)
 tagged_input = ntag(untagged_words, 3)
 
 with open(OFP, "w") as f:
