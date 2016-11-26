@@ -30,21 +30,6 @@ organizations = getAllOfType("ORGANIZATION")
 people = getAllOfType("PERSON")
 locations = getAllOfType("LOCATION")
 
-# We can use this to tag new data in the following way:
-#
-# FOR WORD Wn in UNTAGGED_DATA
-# IF Wn is the member of no dicts
-#     IF Wn ++ W(n+1) is in a dict
-#         Pass Wn ++ W(n+1) to the tagging function
-#     ELSE
-#         
-# ELSE
-#     IF Wn is the member of more than one dict
-#         Tag Wn with the occurence with the highest value
-#     ELSE
-#          Tag Wn with the only tag it is assigned to. 
-
-# Load in untagged data
 untagged_data = ""
 with open(UFP, "r") as f:
     untagged_data = f.read()
@@ -72,17 +57,36 @@ def tag(words):
     maxs = max(scores)
 
     if maxs == 0:
-        return word # If it doesn't fit, return untagged text.
+        return (word, False) # If it doesn't fit, return untagged text.
     if maxs == scores[0]:
-        return '<ENAMEX TYPE="ORGANIZATION">' + word + '</ENAMEX>'
+        return ('<ENAMEX TYPE="ORGANIZATION">' + word + '</ENAMEX>', True)
     if maxs == scores[1]:
-        return '<ENAMEX TYPE="PERSON">' + word + '</ENAMEX>'
+        return ('<ENAMEX TYPE="PERSON">' + word + '</ENAMEX>', True)
     if maxs == scores[2]:
-        return '<ENAMEX TYPE="LOCATION">' + word + '</ENAMEX>'
+        return ('<ENAMEX TYPE="LOCATION">' + word + '</ENAMEX>', True)
 
-tagged_input = ""
-for word in untagged_words:
-       tagged_input += tag([word]) + " "
+'''
+    Given a list of words, attempt to tag phrases of length n, once
+    the end of the list is reached, attempt to tag phrases of length
+    n-1 and so on until n == 0.
+'''
+def ntag(words, n, currpos=0):
+    # Terminate if there aren't enough words to form an n-length phrase.
+    if currpos >= len(words) - 1 - n:
+        print("Only ever got here")
+        return ntag(words, n-1, 0)
+    # Try to tag everything from [currpos:currpos+n+1] 
+        ws = " ".join(words[currpos:currpos + n + 1])
+        print("ws: %s" %ws)
+        tws = tag(ws)
+        if tag(ws)[1]: # If the given words were tagged...
+            del words[currpos:currpos + n + 1] # Remove all the used words
+            words[currpos] = tws[0] # Update the array with the tagged data
+            return ntag(words, n, currpos + n + 1)
+        # If the given words weren't tagged...
+        return ntag(words, n, currpos + 1) # Just increment currpos
+            
+tagged_input = ntag(untagged_words, 3)
 
 with open(OFP, "w") as f:
-    f.write(tagged_input)
+    f.write(" ".join(tagged_input))
