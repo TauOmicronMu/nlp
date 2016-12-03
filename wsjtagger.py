@@ -3,6 +3,7 @@ import nltk.data
 import re
 import pickle
 
+from itertools import * 
 from collections import Counter
 
 FP = "wsj_training/concatstr.txt"
@@ -50,10 +51,10 @@ def tag(words):
     for word in words:
         # Only add a space if there's >1 word
         if firstw:
-            concatw += word
+            concatw += word[0]
             firstw = False
         else:
-            concatw += " " + word
+            concatw += " " + word[0]
 
     scores = getScores(concatw)
     maxs = max(scores)
@@ -83,12 +84,16 @@ def ntag(words, n):
         currpos += 1 # Just increment currpos
     return ntag(words, n-1) # Termination step
 
-def chunk(data):
+def chunk(cdata):
     currpos = 0 # This is where we are in our data.
-    if data[currpos][1] == "NNP" # If we're at the start of a noun phrase...
-        phrase = takewhile(lambda x: x[1] == "NNP", data) # Chunk all successive NNPs with this one and replace the group with the single one.
-        print(phrase)
-    return data
+    while(currpos != len(cdata)):
+        if cdata[currpos][1] == "NNP": # If we're at the start of a noun phrase...
+            phrase = takewhile(lambda x: x[1] == "NNP", cdata) # Chunk all successive NNPs with this one and replace the group with the single one.
+            del cdata[currpos:currpos+len(phrase)] # Remove the chunked words
+            cdata[currpos] = phrase # Replace the chunked words with the amalgamated phrase.
+            currpos += 1
+        currpos += 1
+    return cdata
 
 # First, chunk the pos-tagged data
 pos_tagged_data = pickle.load(open("pos_tagged.p", "rb"))
