@@ -72,6 +72,7 @@ def ntag(words, n):
     if n < 0:
         return words
     currpos = 0
+    
     # If there aren't enough words to form an n-length phrase,
     # Terminate and run ntag on words and n-1.
     while not (currpos >= len(words) -1 - n):
@@ -88,11 +89,14 @@ def chunk(cdata):
     currpos = 0 # This is where we are in our data.
     while(currpos != len(cdata)):
         if cdata[currpos][1] == "NNP": # If we're at the start of a noun phrase...
-            iphrase = takewhile(lambda x: x[1] == "NNP", cdata) 
-            phrase = "<ENAMEX type='none'>".join(iphrase) + "</ENAMEX" # Chunk all successive NNPs with this one and empty-tag
-            del cdata[currpos:currpos+len(listify(iphrase))] # Remove the chunked words
+            chunk = list(takewhile(lambda x: x[1] == "NNP", cdata))
+            print(chunk)
+            iphrase = [a[0] for a in list(takewhile(lambda x: x[1] == "NNP", cdata))]
+            phrase = "".join(iphrase) + "</ENAMEX>" # Chunk all successive NNPs with this one and empty-tag
+            del cdata[currpos:currpos+len(iphrase)] # Remove the chunked words
             cdata[currpos] = phrase # Replace the chunked words with the amalgamated phrase
-            currpos += 1
+        else:
+            cdata[currpos] = cdata[currpos][0] # Just take the string part of the tuple.
         currpos += 1
     return cdata
 
