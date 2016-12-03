@@ -88,9 +88,10 @@ def chunk(cdata):
     currpos = 0 # This is where we are in our data.
     while(currpos != len(cdata)):
         if cdata[currpos][1] == "NNP": # If we're at the start of a noun phrase...
-            phrase = takewhile(lambda x: x[1] == "NNP", cdata) # Chunk all successive NNPs with this one and replace the group with the single one.
-            del cdata[currpos:currpos+len(phrase)] # Remove the chunked words
-            cdata[currpos] = phrase # Replace the chunked words with the amalgamated phrase.
+            iphrase = takewhile(lambda x: x[1] == "NNP", cdata) 
+            phrase = "<ENAMEX type='none'>".join(iphrase) + "</ENAMEX" # Chunk all successive NNPs with this one and empty-tag
+            del cdata[currpos:currpos+len(listify(iphrase))] # Remove the chunked words
+            cdata[currpos] = phrase # Replace the chunked words with the amalgamated phrase
             currpos += 1
         currpos += 1
     return cdata
