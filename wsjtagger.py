@@ -1,6 +1,7 @@
 import nltk
 import nltk.data
 import re
+import pickle
 
 from collections import Counter
 
@@ -79,13 +80,21 @@ def ntag(words, n):
         if tws[1]: 
             del words[currpos:currpos + n + 1] # Remove the used words
             words[currpos] = tws[0] # Replace them with the tagged words
-            # Update currpos to the next untagged phrase
-            currpos = currpos + n + 1
-        else:
-            currpos += 1 # Just increment currpos
+        currpos += 1 # Just increment currpos
     return ntag(words, n-1) # Termination step
 
-tagged_input = ntag(untagged_words, 3)
+def chunk(data):
+    currpos = 0 # This is where we are in our data.
+    if data[currpos][1] == "NNP" # If we're at the start of a noun phrase...
+        phrase = takewhile(lambda x: x[1] == "NNP", data) # Chunk all successive NNPs with this one and replace the group with the single one.
+        print(phrase)
+    return data
+
+# First, chunk the pos-tagged data
+pos_tagged_data = pickle.load(open("pos_tagged.p", "rb"))
+chunked_data = chunk(pos_tagged_data)
+
+tagged_input = ntag(chunked_data, 5)
 
 with open(OFP, "w") as f:
     f.write(" ".join(tagged_input))
