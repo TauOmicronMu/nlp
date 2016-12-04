@@ -149,17 +149,8 @@ def takewhileNNP(tdata, currpos):
             return (acc, currpos-op)
     return (acc, currpos-op)
 
-startpoint = int(sys.argv[1])
-TOTAL = 100
-
-filenames = []
-
-if startpoint == 0:
-    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,100)]
-elif startpoint == 1900:
-    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1900,2001)]
-else:
-    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(startpoint,startpoint+TOTAL)]   
+TOTAL = 2000
+filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL+1)]
 
 for file in filenames:
     if(file != "wsj_1296.txt"): # This one breaks stuff so just ignore it for now.
