@@ -64,7 +64,6 @@ def getScores(phrase):
 def tag(words):
     enamex_pattern = re.compile("<ENAMEX\WTYPE='untagged'>(.*?)<\/ENAMEX>$")
     concatw = "".join(intersperse(words, " "))
-  
     enamex_match = enamex_pattern.match(concatw)
 
     # If this isn't a proper noun phrase - ignore it to save time.
@@ -124,7 +123,7 @@ def ntag(words, n):
         # Try to tag everything from [currpos:currpos+n+1]
         tws = tag(words[currpos:currpos+n+1])
         if tws[1]: 
-            del words[currpos:currpos + n + 1] # Remove the used words
+            del words[currpos:currpos+n] # Remove the used words
             words[currpos] = tws[0] # Replace them with the tagged words
         currpos += 1 # Just increment currpos
     return ntag(words, n-1) # Termination step
@@ -155,8 +154,7 @@ def takewhileNNP(tdata, currpos):
 # First, chunk the pos-tagged data
 pos_tagged_data = pickle.load(open("pos_tagged.p", "rb"))
 chunked_data = chunk(pos_tagged_data)
-
-tagged_input = ntag(chunked_data, 1)
+tagged_input = ntag(chunked_data, 0)
 
 with open(OFP, "w") as f:
     f.write(" ".join(tagged_input))
