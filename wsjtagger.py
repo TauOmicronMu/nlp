@@ -51,10 +51,10 @@ def tag(words):
     for word in words:
         # Only add a space if there's >1 word
         if firstw:
-            concatw += word[0]
+            concatw += word
             firstw = False
         else:
-            concatw += " " + word[0]
+            concatw += " " + word
 
     scores = getScores(concatw)
     maxs = max(scores)
@@ -87,24 +87,33 @@ def ntag(words, n):
 
 def chunk(cdata):
     currpos = 0 # This is where we are in our data.
-    while(currpos != len(cdata)):
+    while(currpos < len(cdata)):
         if cdata[currpos][1] == "NNP": # If we're at the start of a noun phrase...
-            chunk = list(takewhile(lambda x: x[1] == "NNP", cdata))
-            print(chunk)
-            iphrase = [a[0] for a in list(takewhile(lambda x: x[1] == "NNP", cdata))]
-            phrase = "".join(iphrase) + "</ENAMEX>" # Chunk all successive NNPs with this one and empty-tag
-            del cdata[currpos:currpos+len(iphrase)] # Remove the chunked words
+            chunk = takewhileNNP(cdata, currpos)
+            phrase = "<ENAMEX type='untagged'>%s</ENAMEX>" %chunk[0] # Chunk all successive NNPs with this one and empty-tag
+            del cdata[currpos:currpos+chunk[1]-1] # Remove the chunked words
             cdata[currpos] = phrase # Replace the chunked words with the amalgamated phrase
         else:
             cdata[currpos] = cdata[currpos][0] # Just take the string part of the tuple.
         currpos += 1
+    print(cdata)
     return cdata
+
+def takewhileNNP(tdata, currpos):
+    op = currpos
+    acc = ""
+    while(tdata[currpos][1] == "NNP"):
+        if(op != currpos):
+            acc += " "
+        acc += tdata[currpos][0] 
+        currpos += 1
+    return (acc, currpos-op)
 
 # First, chunk the pos-tagged data
 pos_tagged_data = pickle.load(open("pos_tagged.p", "rb"))
 chunked_data = chunk(pos_tagged_data)
 
-tagged_input = ntag(chunked_data, 5)
+tagged_input = ntag(chunked_data, 1)
 
 with open(OFP, "w") as f:
     f.write(" ".join(tagged_input))
