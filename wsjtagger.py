@@ -10,11 +10,27 @@ FP = "wsj_training/concatstr.txt"
 UFP = "wsj_untagged/concatstr.txt"
 OFP = "output.txt"
 
+OTAG = '<ENAMEX TYPE="ORGANIZATION">%s</ENAMEX>'
+PTAG = '<ENAMEX TYPE="PERSON">%s</ENAMEX>'
+LTAG = '<ENAMEX TYPE="LOCATION">%s</ENAMEX>'
+
 tag_map = {
     "ORGANIZATION": "ORG",
     "PERSON": "PER",
     "LOCATION": "LOC"
 }
+
+def intersperse(iterable, delimiter):
+    it = iter(iterable)
+    yield next(it)
+    for x in it:
+        yield delimiter
+        yield x
+
+def powerset(iterable):
+    "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
+    s = list(iterable)
+    return chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
 
 # Load in the tagged data as a single string from the filepath.
 data = ""
@@ -46,28 +62,56 @@ def getScores(phrase):
     return the word(s) if no tags apply to them.
 '''
 def tag(words):
-    concatw = ""
-    firstw = True
-    for word in words:
-        # Only add a space if there's >1 word
-        if firstw:
-            concatw += word
-            firstw = False
-        else:
-            concatw += " " + word
+    enamex_pattern = re.compile("<ENAMEX\WTYPE='untagged'>(.*?)<\/ENAMEX>$")
+    concatw = "".join(intersperse(words, " "))
+  
+    enamex_match = enamex_pattern.match(concatw)
 
-    scores = getScores(concatw)
+    # If this isn't a proper noun phrase - ignore it to save time.
+    if(enamex_match == None):
+        return (concatw, False) 
+    
+    lookup_phrase = enamex_match.groups()[0] # We only care about what's inside the tags
+
+    scores = getScores(lookup_phrase)
     maxs = max(scores)
 
-    if maxs == 0:
-        return (concatw, False) # If it doesn't fit, return untagged text.
-    if maxs == scores[0]:
-        return ('<ENAMEX TYPE="ORGANIZATION">' + concatw + '</ENAMEX>', True)
-    if maxs == scores[1]:
-        return ('<ENAMEX TYPE="PERSON">' + concatw + '</ENAMEX>', True)
-    if maxs == scores[2]:
-        return ('<ENAMEX TYPE="LOCATION">' + concatw + '</ENAMEX>', True)
+    if maxs != 0: # If we've seen the phrase before, tag it based on where we've seen it most
+        if maxs == scores[0]:
+            return (OTAG %lookup_phrase, True)
+        if maxs == scores[1]:
+            return (PTAG %lookup_phrase, True)
+        if maxs == scores[2]:
+            return (LTAG %lookup_phrase, True)
+ 
+    # If we've never seen the whole phrase before, see if we've seen individual parts of it
+    powerlist = ["".join(list(intersperse(x, " "))) for x in list(powerset(lookup_phrase.split(" ")))][1:-1] 
+    pscores = [] 
+    maxes = []
+    
+    for part in powerlist:
+        tempscores = getScores(part)
+        pscores.append(tempscores)
+        maxes.append(max(tempscores))
+   
+    mscore = 0
+    try:
+        mscore = max(maxes)
+    except:    
+        pass
+ 
+    if mscore != 0:
+        max_scores = pscores[maxes.index(mscore)] # Get our three "max scores". 
 
+        if mscore == max_scores[0]:
+            return (OTAG %lookup_phrase, True)
+        if mscore == max_scores[1]:
+            return (PTAG %lookup_phrase, True)
+        if mscore == max_scores[2]:
+            return (LTAG %lookup_phrase, True)
+
+    return (lookup_phrase, True) # We weren't able to tag it, so 'untag' it and pretend it was tagged.
+    
 def ntag(words, n):
     if n < 0:
         return words
@@ -76,7 +120,7 @@ def ntag(words, n):
     # If there aren't enough words to form an n-length phrase,
     # Terminate and run ntag on words and n-1.
     while not (currpos >= len(words) -1 - n):
-        print("In while loop, currpos: %s, n: %s" %(currpos, (len(words)-1-n)))
+        # print("In while loop, currpos: %s, n: %s" %(currpos, (len(words)-1-n)))
         # Try to tag everything from [currpos:currpos+n+1]
         tws = tag(words[currpos:currpos+n+1])
         if tws[1]: 
@@ -90,13 +134,12 @@ def chunk(cdata):
     while(currpos < len(cdata)):
         if cdata[currpos][1] == "NNP": # If we're at the start of a noun phrase...
             chunk = takewhileNNP(cdata, currpos)
-            phrase = "<ENAMEX type='untagged'>%s</ENAMEX>" %chunk[0] # Chunk all successive NNPs with this one and empty-tag
+            phrase = "<ENAMEX TYPE='untagged'>%s</ENAMEX>" %chunk[0] # Chunk all successive NNPs with this one and empty-tag
             del cdata[currpos:currpos+chunk[1]-1] # Remove the chunked words
             cdata[currpos] = phrase # Replace the chunked words with the amalgamated phrase
         else:
             cdata[currpos] = cdata[currpos][0] # Just take the string part of the tuple.
         currpos += 1
-    print(cdata)
     return cdata
 
 def takewhileNNP(tdata, currpos):
