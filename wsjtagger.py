@@ -139,8 +139,6 @@ def chunk(cdata):
 def takewhileNNP(tdata, currpos):
     op = currpos
     acc = ""
-    print("currpos %s" %currpos)
-    print("length %s" %len(tdata))
     while(tdata[currpos][1] == "NNP"):
         if(op != currpos):
             acc += " "
@@ -157,18 +155,17 @@ TOTAL = 100
 filenames = []
 
 if startpoint == 0:
-    with open("output.txt", "w") as f:
-        f.write("") # Clear the output file.
-    filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(1,99)]
+    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,99)]
 else:
-    filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(startpoint,startpoint+TOTAL)]   
+    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(startpoint,startpoint+TOTAL)]   
 
 for file in filenames:
+    print(file)
     fdata = ""
-    with open(file, "r") as f:
+    with open("wsj_untagged/"+file, "r") as f:
         fdata = f.read() # Grab the contents of the file
     pos_tagged_fdata = nltk.pos_tag(re.findall(r'\w+', fdata)) # pos-tag the contents
     chunked_data = chunk(pos_tagged_fdata) # Chunk the pos-tagged data
     tagged_data = ntag(chunked_data) # Tag the chunked data
-    with open(OFP, "a") as f:
+    with open("wsj_tagged/"+file, "w") as f:
         f.write(" ".join(tagged_data)) # Append the tagged data to the output file.
