@@ -104,6 +104,8 @@ def tag(words):
         if mscore == max_scores[2]:
             return (LTAG %lookup_phrase, True)
 
+    # TODO: implement wikification if there's time.
+
     return (lookup_phrase, True) # We weren't able to tag it, so 'untag' it and pretend it was tagged.
     
 def ntag(words, n=0):

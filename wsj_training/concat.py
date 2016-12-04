@@ -1,5 +1,5 @@
 OUTPUT= "concatstr.txt"
-TOTAL = 2000
+TOTAL = 501
 
 filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL)]
 

@@ -1,0 +1,3 @@
+Accuracy (100 Trained): 58.98800023644854
+Accuracy (50 Trained): 51.244310456936816
+Accuracy (25 Trained): 43.437567732655516
