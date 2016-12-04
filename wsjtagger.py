@@ -111,7 +111,7 @@ def tag(words):
 
     return (lookup_phrase, True) # We weren't able to tag it, so 'untag' it and pretend it was tagged.
     
-def ntag(words, n):
+def ntag(words, n=0):
     if n < 0:
         return words
     currpos = 0
@@ -151,10 +151,14 @@ def takewhileNNP(tdata, currpos):
         currpos += 1
     return (acc, currpos-op)
 
-# First, chunk the pos-tagged data
-pos_tagged_data = pickle.load(open("pos_tagged.p", "rb"))
-chunked_data = chunk(pos_tagged_data)
-tagged_input = ntag(chunked_data, 0)
+filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(1,6)]
 
-with open(OFP, "w") as f:
-    f.write(" ".join(tagged_input))
+for file in filenames:
+    fdata = ""
+    with open(file, "r") as f:
+        fdata = f.read() # Grab the contents of the file
+    pos_tagged_fdata = nltk.pos_tag(re.findall(r'\w+', fdata)) # pos-tag the contents
+    chunked_data = chunk(pos_tagged_fdata) # Chunk the pos-tagged data
+    tagged_data = ntag(chunked_data) # Tag the chunked data
+    with open(OFP, "a") as f:
+        f.write(" ".join(tagged_data)) # Append the tagged data to the output file.
