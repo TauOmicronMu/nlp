@@ -48,12 +48,6 @@ organizations = getAllOfType("ORGANIZATION")
 people = getAllOfType("PERSON")
 locations = getAllOfType("LOCATION")
 
-untagged_data = ""
-with open(UFP, "r") as f:
-    untagged_data = f.read()
-
-untagged_words = re.findall(r'\w+', untagged_data)
-
 def getScores(phrase):
     return (organizations[phrase], people[phrase], locations[phrase])
 
@@ -144,14 +138,23 @@ def chunk(cdata):
 def takewhileNNP(tdata, currpos):
     op = currpos
     acc = ""
+    print("currpos %s" %currpos)
+    print("length %s" %len(tdata))
     while(tdata[currpos][1] == "NNP"):
         if(op != currpos):
             acc += " "
         acc += tdata[currpos][0] 
         currpos += 1
+        
+        if(currpos >= len(tdata)-1):
+            return (acc, currpos-op)
     return (acc, currpos-op)
 
-filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(1,6)]
+TOTAL = 100
+filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL)]
+
+with open("output.txt", "w") as f:
+    f.write("") # Clear the output file.
 
 for file in filenames:
     fdata = ""
