@@ -155,7 +155,7 @@ TOTAL = 100
 filenames = []
 
 if startpoint == 0:
-    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,99)]
+    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,100)]
 else:
     filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(startpoint,startpoint+TOTAL)]   
 
