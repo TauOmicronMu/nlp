@@ -2,6 +2,7 @@ import nltk
 import nltk.data
 import re
 import pickle
+import sys
 
 from itertools import * 
 from collections import Counter
@@ -150,11 +151,17 @@ def takewhileNNP(tdata, currpos):
             return (acc, currpos-op)
     return (acc, currpos-op)
 
+startpoint = int(sys.argv[1])
 TOTAL = 100
-filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL)]
 
-with open("output.txt", "w") as f:
-    f.write("") # Clear the output file.
+filenames = []
+
+if startpoint == 0:
+    with open("output.txt", "w") as f:
+        f.write("") # Clear the output file.
+    filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(1,99)]
+else:
+    filenames = ["wsj_untagged/wsj_%s.txt" %str(n).zfill(4) for n in range(startpoint,startpoint+TOTAL)]   
 
 for file in filenames:
     fdata = ""
