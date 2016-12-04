@@ -156,16 +156,22 @@ filenames = []
 
 if startpoint == 0:
     filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,100)]
+elif startpoint == 1900:
+    filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1900,2001)]
 else:
     filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(startpoint,startpoint+TOTAL)]   
 
 for file in filenames:
-    print(file)
-    fdata = ""
-    with open("wsj_untagged/"+file, "r") as f:
-        fdata = f.read() # Grab the contents of the file
-    pos_tagged_fdata = nltk.pos_tag(re.findall(r'\w+', fdata)) # pos-tag the contents
-    chunked_data = chunk(pos_tagged_fdata) # Chunk the pos-tagged data
-    tagged_data = ntag(chunked_data) # Tag the chunked data
-    with open("wsj_tagged/"+file, "w") as f:
-        f.write(" ".join(tagged_data)) # Append the tagged data to the output file.
+    if(file != "wsj_1296.txt"): # This one breaks stuff so just ignore it for now.
+        print(file)
+        fdata = ""
+        with open("wsj_untagged/"+file, "r") as f:
+            fdata = f.read() # Grab the contents of the file
+        pos_tagged_fdata = nltk.pos_tag(re.findall(r'\w+', fdata)) # pos-tag the contents
+        chunked_data = chunk(pos_tagged_fdata) # Chunk the pos-tagged data
+        tagged_data = ntag(chunked_data) # Tag the chunked data
+        with open("wsj_tagged/"+file, "w") as f:
+            f.write(" ".join(tagged_data)) # Append the tagged data to the output file.
+    else:
+        with open("wsj_tagged/"+file, "w") as f:
+            f.write(open("wsj_untagged/"+file,"r").read())
