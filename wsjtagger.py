@@ -73,11 +73,11 @@ def tag(words):
 
     if maxs != 0: # If we've seen the phrase before, tag it based on where we've seen it most
         if maxs == scores[0]:
-            return (OTAG %lookup_phrase, True)
+            return otag(lookup_phrase)
         if maxs == scores[1]:
-            return (PTAG %lookup_phrase, True)
+            return ptag(lookup_phrase)
         if maxs == scores[2]:
-            return (LTAG %lookup_phrase, True)
+            return ltag(lookup_phrase)
  
     # If we've never seen the whole phrase before, see if we've seen individual parts of it
     powerlist = ["".join(list(intersperse(x, " "))) for x in list(powerset(lookup_phrase.split(" ")))][1:-1] 
@@ -90,8 +90,8 @@ def tag(words):
         maxes.append(max(tempscores))
    
     mscore = 0
-    try:
-        mscore = max(maxes)
+    try: 
+        mscore = max(maxes) # Can't do max on something that doesn't exist so just kinda... 'fix' that 
     except:    
         pass
  
@@ -99,11 +99,11 @@ def tag(words):
         max_scores = pscores[maxes.index(mscore)] # Get our three "max scores". 
 
         if mscore == max_scores[0]:
-            return (OTAG %lookup_phrase, True)
+            return otag(lookup_phrase)
         if mscore == max_scores[1]:
-            return (PTAG %lookup_phrase, True)
+            return ptag(lookup_phrase)
         if mscore == max_scores[2]:
-            return (LTAG %lookup_phrase, True)
+            return ltag(lookup_phrase)
 
     # If we still have no idea what it is... make a GET request to the DBPedia API
     query = requests.get("http://lookup.dbpedia.org/api/search.asmx/KeywordSearch?MaxHits=1&QueryString=%s"%lookup_phrase).text  
@@ -111,11 +111,31 @@ def tag(words):
     org_labels = re.findall(r'<Label>.*?organization.*?</Label>', query) 
     loc_labels = re.findall(r'<Label>.*?place.*?</Label>', query)
     per_labels = re.findall(r'<Label>.*?person.*?</Label>', query)
-    print(org_labels)
-    print(loc_labels)
-    print(per_labels)
+    
+    oscore = len(org_labels)
+    lscore = len(loc_labels)
+    pscore = len(per_labels)
+    
+    maxs = max(oscore, lscore, pscore)
+    
+    if maxs != 0: # If we've now been able to categorise the NE
+        if maxs == oscore:
+            return otag(lookup_phrase)
+        if maxs == lscore:
+            return ltag(lookup_phrase)
+        if maxs == pscore:
+            return ptag(lookup_phrase)
+ 
     return (lookup_phrase, True) # We weren't able to tag it, so 'untag' it and pretend it was tagged.
     
+
+def otag(s):
+    return (OTAG %s, True)
+def ptag(s):
+    return (PTAG %s, True)
+def ltag(s):
+    return (LTAG %s, True)
+
 def ntag(words, n=0):
     if n < 0:
         return words
@@ -159,7 +179,7 @@ def takewhileNNP(tdata, currpos):
             return (acc, currpos-op)
     return (acc, currpos-op)
 
-TOTAL = 1
+TOTAL = 2001
 filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL+1)]
 
 for file in filenames:
