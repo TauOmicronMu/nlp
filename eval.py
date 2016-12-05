@@ -14,7 +14,7 @@ tag_pattern = re.compile('<ENAMEX\WTYPE=.*?>.*?<\/ENAMEX>')
 # First, evaluate the tagger given the whole tagged data for the untagged data.
 exemplar_tagged = ""
 my_tagged_whole = ""
-punct = "!#$%&()*+,-.:;?@[\]^_`{|}~"
+punct = " !#$%&()*+,-.:;?@[\]^_`{|}~"
 
 total = 0
 correctly_tagged_whole = 0
@@ -23,9 +23,12 @@ correctly_tagged_quarter = 0
 
 filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,2001)]
 
+def strip(s):
+    return "".join([c for c in s if c not in punct])
+
 for file in filenames:
     with open("wsj_training/%s"%file, "r") as f:
-        exemplar_tagged = "".join([c for c in f.read() if c not in punct])
+        exemplar_tagged = f.read()
     with open("wsj_tagged_whole/%s"%file, "r") as f:
         my_tagged_whole = f.read()
     with open("wsj_tagged_half/%s"%file, "r") as f:
@@ -33,10 +36,10 @@ for file in filenames:
     with open("wsj_tagged_quarter/%s"%file, "r") as f:
         my_tagged_quarter = f.read()
 
-    exemplar_tags = tag_pattern.findall(exemplar_tagged)
-    my_tags_whole = tag_pattern.findall(my_tagged_whole)
-    my_tags_half = tag_pattern.findall(my_tagged_half)    
-    my_tags_quarter = tag_pattern.findall(my_tagged_quarter)
+    exemplar_tags = list(map(strip, tag_pattern.findall(exemplar_tagged)))
+    my_tags_whole = list(map(strip, tag_pattern.findall(my_tagged_whole)))
+    my_tags_half = list(map(strip, tag_pattern.findall(my_tagged_half)))
+    my_tags_quarter = list(map(strip, tag_pattern.findall(my_tagged_quarter)))
 
     if(file != "wsj_1296.txt"):
         for tag in exemplar_tags:

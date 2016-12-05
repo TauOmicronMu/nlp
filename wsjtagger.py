@@ -1,6 +1,7 @@
 import nltk
 import nltk.data
 import re
+import requests
 import pickle
 import sys
 
@@ -104,8 +105,15 @@ def tag(words):
         if mscore == max_scores[2]:
             return (LTAG %lookup_phrase, True)
 
-    # TODO: implement wikification if there's time.
-
+    # If we still have no idea what it is... make a GET request to the DBPedia API
+    query = requests.get("http://lookup.dbpedia.org/api/search.asmx/KeywordSearch?MaxHits=1&QueryString=%s"%lookup_phrase).text  
+    # Check if the data contains any labels for organization, location or person
+    org_labels = re.findall(r'<Label>.*?organization.*?</Label>', query) 
+    loc_labels = re.findall(r'<Label>.*?place.*?</Label>', query)
+    per_labels = re.findall(r'<Label>.*?person.*?</Label>', query)
+    print(org_labels)
+    print(loc_labels)
+    print(per_labels)
     return (lookup_phrase, True) # We weren't able to tag it, so 'untag' it and pretend it was tagged.
     
 def ntag(words, n=0):
@@ -151,7 +159,7 @@ def takewhileNNP(tdata, currpos):
             return (acc, currpos-op)
     return (acc, currpos-op)
 
-TOTAL = 2000
+TOTAL = 1
 filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL+1)]
 
 for file in filenames:
