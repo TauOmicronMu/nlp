@@ -182,6 +182,13 @@ def takewhileNNP(tdata, currpos):
 TOTAL = 2001
 filenames = ["wsj_%s.txt" %str(n).zfill(4) for n in range(1,TOTAL+1)]
 
+def tag_phrase(data):
+    pos_tagged_data = nltk.pos_tag(re.findall(r'\w+', data))
+    chunked_data = chunk(pos_tagged_data) 
+    tagged_data = ntag(chunked_data)
+    return tagged_data
+
+'''
 for file in filenames:
     if(file != "wsj_1296.txt"): # This one breaks stuff so just ignore it for now.
         print(file)
@@ -196,3 +203,4 @@ for file in filenames:
     else:
         with open("wsj_tagged/"+file, "w") as f:
             f.write(open("wsj_untagged/"+file,"r").read())
+'''

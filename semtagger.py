@@ -1,6 +1,7 @@
 import re
 import nltk
 import itertools
+import wsjtagger
 
 # TODO: Sort out this list comp <3 
 # filenames = ["]
@@ -12,20 +13,27 @@ def intersperse(iterable, delimiter):
         yield delimiter
         yield x
 
-time_pattern = re.compile("[Tt]ime\:([\W\w]*)")
-
 data = ""
 split_data = []
 header = ""
 abstract_word = ""
 abstract = ""
-with open("s_untagged/364.txt", "r") as f:
+with open("s_untagged/354.txt", "r") as f:
     data = f.read()
-    split_data = re.split("[Aa]bstract\:", data)
-    header = split_data[0]
-    abstract_word = split_data[1]
-    abstract = split_data[2]
-
+    
+    # This next bit is kinda awful but re.split was giving me some issues...
+    # Split on newlines
+    lines = data.split("\n")
+    # Look through to find the start of the abstract   
+    abstract_pattern = re.compile("[Aa]bstract\:\W+")
+    for line in lines:
+        matches = abstract_pattern.findall(line)
+        if matches != []: # Yay, we found the abstract!
+            pos = lines.index(matches[0])
+            header = "".join(intersperse(lines[:pos], "\n"))
+            abstract_word = "".join(lines[pos])
+            abstract = "".join(intersperse(lines[pos+1:], "\n"))
+    
 # Take the abstract and first split it into paragraphs by splitting on '\n\n'
 paragraphs = abstract.split('\n\n')
 
@@ -34,11 +42,16 @@ sentences = [nltk.sent_tokenize(s) for s in paragraphs][1:]
 
 header_lines = header.split("\n")
 
-# Now attempt to get a start time from the header
-times = []
-for line in header_lines:
-    times.append(time_pattern.findall(line))
-times = [item for x in times if x != [] for item in x]
-print(times)
-# Next attempt to get the speaker from the header
+def get_matches(headerl, pattern):
+    matches = []
+    for line in headerl:
+        matches.append(pattern.findall(line))
+    return [item for x in matches if x != [] for item in x]
 
+time_pattern = re.compile("[Tt]ime\:([\W\w]*)")
+times = get_matches(header_lines, time_pattern)    
+print(times) 
+
+speaker_pattern = re.compile("[Ww][Hh][Oo]\:([\W\w]*)|[Ss][Pp][Ee][Aa][Kk][Ee][Rr]\:([\W\w]*)")
+speakers = get_matches(header_lines, speaker_pattern)
+print(speakers)
