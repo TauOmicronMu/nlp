@@ -12,6 +12,8 @@ def intersperse(iterable, delimiter):
         yield delimiter
         yield x
 
+time_pattern = re.compile("[Tt]ime\:([\W\w]*)")
+
 data = ""
 split_data = []
 header = ""
@@ -30,4 +32,13 @@ paragraphs = abstract.split('\n\n')
 # For each paragraph, tokenise them using the nltk.sent_tokenize() function.
 sentences = [nltk.sent_tokenize(s) for s in paragraphs][1:]
 
-print(header)
+header_lines = header.split("\n")
+
+# Now attempt to get a start time from the header
+times = []
+for line in header_lines:
+    times.append(time_pattern.findall(line))
+times = [item for x in times if x != [] for item in x]
+print(times)
+# Next attempt to get the speaker from the header
+
