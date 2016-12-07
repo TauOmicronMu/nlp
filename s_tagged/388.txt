@@ -1,0 +1,28 @@
+<paragraph><sentence>
+RI SEMINAR</sentence></paragraph>
+
+<paragraph><sentence> WHEN:		Friday, 20 November 1992, <stime>3:30 </stime>- <etime>5:00 PM</etime>
+		Refreshments to be served by 3:15 PM</sentence></paragraph>
+
+<paragraph><sentence> WHERE:		Baker Hall - Adamson Wing</sentence></paragraph>
+
+<paragraph><sentence> SPEAKERS: 	 	<speaker>Eric Krotkov and Reid Simmons</speaker>
+ 		Carnegie Mellon University</sentence></paragraph>
+
+<paragraph><sentence> TITLE:		Autonomous Walking for the Ambler Planetary
+ 		Exploration Robot</sentence></paragraph>
+
+<paragraph><sentence> ABSTRACT:		Previously Posted</sentence></paragraph>
+
+<paragraph><sentence> HOST:		Hagen Schempf, x6884</sentence></paragraph>
+
+<paragraph><sentence>---
+****************|**************************|**************************
+*               |                          |                         *
+*Tim Meadows    |  Field Robotics Center   | Carnegie Mellon Univ.</sentence><sentence>*
+*               |                          |                         *
+*412-268-7085   |  Fax: 412-682-1793       | tmeadows@frc.ri.cmu.edu *
+*               |                          |                         *
+**********************************************************************</sentence></paragraph>
+
+<paragraph></paragraph>

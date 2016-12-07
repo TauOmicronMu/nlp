@@ -1,0 +1,33 @@
+<paragraph><sentence>
+RI SEMINAR</sentence></paragraph>
+
+<paragraph><sentence> WHEN:		Friday, November 13, 1992, <stime>3:30</stime> PM
+		Refreshments to be served by 3:15 PM</sentence></paragraph>
+
+<paragraph><sentence> WHERE:		Baker Hall Adamson Wing</sentence></paragraph>
+
+<paragraph><sentence> SPEAKER:		<speaker>Charles R</speaker>. Price - NASA, Johnson Space Center</sentence></paragraph>
+
+<paragraph><sentence> TITLE:		Space Robotics Activities at the Johnson Space Center</sentence></paragraph>
+
+<paragraph><sentence>Space missions and unique considerations for space environments 
+are described.</sentence><sentence>The Shuttle Remote Manipulator System is described in 
+detail, and representative space missions are discussed.</sentence><sentence>The Space Station 
+Freedom robots are described and their long term operations are discussed.</sentence><sentence>The Johnson Space Center development of the EVA (Extravehicular Activity)
+Helper - Retriever Robot is discussed.</sentence><sentence>Advanced technologies under 
+development for future robotic applications are discussed including dexterous 
+hands, high performance manipulators, fault tolerant robotic joints, and 
+vision-based intelligent robots.</sentence></paragraph>
+
+<paragraph><sentence> Host: Hagen Schempf, x6884</sentence></paragraph>
+
+<paragraph><sentence>---
+****************|**************************|**************************
+*               |                          |                         *
+*Tim Meadows    |  Field Robotics Center   | Carnegie Mellon Univ.</sentence><sentence>*
+*               |                          |                         *
+*412-268-7085   |  Fax: 412-682-1793       | tmeadows@frc.ri.cmu.edu *
+*               |                          |                         *
+**********************************************************************</sentence></paragraph>
+
+<paragraph></paragraph>

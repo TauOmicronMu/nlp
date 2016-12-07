@@ -1,0 +1,25 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> Date:  		Tuesday, December 14, 1993
+ Time:		2-<etime>3:30 pm</etime>
+ Place:		WeH 4601</sentence></paragraph>
+
+<paragraph><sentence> Speaker:	<speaker>Alex Pentland</speaker>
+ 		Perceptual Computing Section, The Media Laboratory 
+ 		Massachusetts Institute of Technology
+ 		Room E15-387, 20 Ames Street, Cambridge MA 02139</sentence></paragraph>
+
+<paragraph><sentence> Title: 	MULTIPLE-MODEL MACHINE VISION</sentence></paragraph>
+
+<paragraph><sentence>Images are fundamentally inhomogeneous, yet most machine vision work has
+been based on homogeneous processing using a single type of image model.</sentence><sentence>We
+have developed a framework for inhomogeneous, multiple-model machine vision
+using a Minimum Description Length (MDL)/Maximum A Posteriori (MAP)
+selection criterion.</sentence><sentence>I will talk about how we have applied this framework
+to the problem of multiple-object structure/egomotion from uncalibrated
+video, and the problem of object recognition using 2-D aspect models.</sentence></paragraph>
+
+<paragraph><sentence>------------------------------------------------------------------------------
+If you would like to make an appointment with Alex please feel free to contact
+Patty Mackiewicz via email (patty@cs).</sentence><sentence>------------------------------------------------------------------------------
+</sentence></paragraph>

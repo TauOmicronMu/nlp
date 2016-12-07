@@ -1,0 +1,16 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> SPEAKER:  <speaker>Guy L</speaker>. Steele, Jr.</sentence><sentence>Thinking Machines Corporation</sentence></paragraph>
+
+<paragraph><sentence> TOPIC:    High Performance Fortran</sentence></paragraph>
+
+<paragraph><sentence> DATE:     Friday, February 11, 1994</sentence></paragraph>
+
+<paragraph><sentence> TIME:     <stime>4:00</stime> pm</sentence></paragraph>
+
+<paragraph><sentence> PLACE:    3rd Floor Conference Room
+           Mellon Institute Building</sentence></paragraph>
+
+<paragraph><sentence>          ABSTRACT NOT AVAILABLE AT THIS TIME.</sentence></paragraph>
+
+<paragraph></paragraph>

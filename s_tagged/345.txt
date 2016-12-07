@@ -1,0 +1,27 @@
+<paragraph><sentence>
+**************************************************
+RI SEMINAR</sentence></paragraph>
+
+<paragraph><sentence> WHEN:	Friday, March 6, 1992, <stime>3:30</stime> PM</sentence></paragraph>
+
+<paragraph><sentence> WHERE:	Baker Hall, Adamson Wing
+	Refreshments to be served by 3:15 PM</sentence></paragraph>
+
+<paragraph><sentence> SPEAKER:	<speaker>Richard W</speaker>. Longman, 
+ 	Professor of Mechanical Engineering, Columbia University</sentence></paragraph>
+
+<paragraph><sentence> TITLE:	Learning Control for Improved Performance in 
+ 	Repetitive Robot Operations</sentence></paragraph>
+
+<paragraph><sentence>Learning control refers to control systems that can learn from previous 
+experience performing a specific task, in order to improve their performance 
+in future executions of the task.</sentence><sentence>Although there are some precursors, the filed 
+started in 1984 with several researchers on different continents (including 
+Professor Longman, then Australia) addressing the problem of improving control 
+system performance for robots performing repetitive tasks on assembly lines.</sentence><sentence>The talk will give an overview of learning control strategies that make use of 
+control theory concepts to accomplish their learning.</sentence></paragraph>
+
+<paragraph><sentence> Host: Hagen Schempf, x6884
+***************************************************************************</sentence></paragraph>
+
+<paragraph></paragraph>

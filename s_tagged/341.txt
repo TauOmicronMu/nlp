@@ -1,0 +1,38 @@
+<paragraph></paragraph>
+
+<paragraph><sentence>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	     Friendly reminder:  Robotics Seminar Today!</sentence><sentence>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</sentence></paragraph>
+
+<paragraph><sentence>Jeff Kerr will be in the Manipulation Lab in the late morning,
+chatting about research.</sentence><sentence>If you don't have a scheduled appointment
+and would like to chat with Jeff feel free to drop by.</sentence><sentence>--- Mike</sentence></paragraph>
+
+<paragraph><sentence>------------------------------------------------------------------------------</sentence></paragraph>
+
+<paragraph><sentence>	  Technology Transfer in Robotics: A Worm's Eye View</sentence></paragraph>
+
+<paragraph><sentence>			      Jeff Kerr
+			 Zebra Robotics, Inc.
+			Palo Alto, California</sentence></paragraph>
+
+<paragraph><sentence>Ten years ago, while robotics was viewed as the next industry to follow the
+huge advances and successes of the electronics and computer industry, there
+were only a handful of robotics research labs around the world.</sentence><sentence>Now, with
+robotics making its way into the mainstream engineering curriculum of many
+universities and with hundreds of research groups emerging around the world,
+the robotics industry itself is proving itself to be one of the great
+commercial disappointments of the last decade, with growth at a snails pace
+and with innovative technological advances extremely rare.</sentence><sentence>Zebra Robotics,
+for the past five years, has been attempting to commercialize force control
+capabilities for robots.</sentence><sentence>I will be discussing some of my experiences in
+trying to effect technology transfer and what I see might be some of the
+reasons and some of the solutions to the great disparity between what is
+done in research labs and what is available commercially.</sentence></paragraph>
+
+<paragraph><sentence>-----------------------------------------
+Refreshments at 3:15
+Talk at <stime>3:30</stime>
+ Location:  Adamson Wing, Baker Hall
+-----------------------------------------
+ Host: Michael Erdmann, x7883
+</sentence></paragraph>

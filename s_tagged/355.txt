@@ -1,0 +1,15 @@
+<paragraph><sentence>
+Special Seminar in Digital Mapping and Computer Vision</sentence></paragraph>
+
+<paragraph><sentence> Speaker: Professor <speaker>Franz Leberl</speaker>
+ 	 Department of Photogrammetry and Computer Graphics
+ 	 Technical University Graz
+ 	 Austria</sentence></paragraph>
+
+<paragraph><sentence> Date:    Tuesday, November 10
+ Time:    <stime>3:30 </stime>- <etime>5:00 pm</etime>
+ Place:   Wean Hall 4625
+ Title:   Radargrammetric Processing of Magellan Images of the Planet Venus</sentence></paragraph>
+
+<paragraph><sentence>See previous post for full abstract.
+</sentence></paragraph>

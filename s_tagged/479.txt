@@ -1,0 +1,15 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> REMINDER:</sentence></paragraph>
+
+<paragraph><sentence> 				SPECIAL SEMINAR</sentence></paragraph>
+
+<paragraph><sentence> Speaker:  <speaker>Leslie Lamport</speaker>
+           Digital Equipment Corporation
+           Systems Research Center</sentence></paragraph>
+
+<paragraph><sentence> Date:     Tuesday, April 28
+ Time:     <stime>3:30</stime> pm
+ Place:    Wean Hall 4623
+ Topic:    The Temporal Logic of Actions
+</sentence></paragraph>

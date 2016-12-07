@@ -1,0 +1,11 @@
+<paragraph></paragraph>
+
+<paragraph><sentence>"Tools for Object Oriented Programming on Massively Parallel Systems"
+Dennis Gannon, University of Indiana</sentence></paragraph>
+
+<paragraph><sentence>No abstract available</sentence></paragraph>
+
+<paragraph><sentence> Where: SEI Auditorium
+ Date: Friday, September 30
+ Time: <stime>4:00</stime> p.m.
+</sentence></paragraph>

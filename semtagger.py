@@ -147,3 +147,7 @@ for file in filenames:
     with open("s_tagged/%s.txt"%file, "w") as f:
         f.write(tagged_data)
 
+for file in bad_filenames:
+    with open("s_untagged/%s.txt"%file, "r") as f:
+        with open("s_tagged/%s.txt"%file, "w") as f2:
+            f2.write(f.read())

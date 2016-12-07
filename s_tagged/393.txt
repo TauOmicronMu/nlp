@@ -1,0 +1,15 @@
+<paragraph><sentence>
+		PSC/CS Seminar</sentence></paragraph>
+
+<paragraph><sentence>	The VPP 500 -- Fujitsu's Parallel Processor
+			Ken Miura
+		Fujitsu America, Inc.</sentence></paragraph>
+
+<paragraph><sentence>	<stime>4:00</stime> p.m., 3rd Floor Conference Room
+		   Mellon Institute Bldg</sentence></paragraph>
+
+<paragraph><sentence>-------
+No abstract is available at this time.</sentence><sentence>A list of future seminars will be
+posted in the near future.  </sentence></paragraph>
+
+<paragraph></paragraph>

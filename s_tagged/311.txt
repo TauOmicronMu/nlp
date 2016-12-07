@@ -1,0 +1,16 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> Speaker: Professor <speaker>Reuven Karni</speaker>, Technion Institute of Technology
+ Topic:	Exploring the autonomous learning problem with mathematical programming
+ When: Tuesday February 12, 1991, 1:30-2:30pm,  Doherty Hall 3313
+The autonomous learning problem (ALP) is defined as: A series of training
+examples is provided, characterized by a conjunction of specific values of a
+set of common attributes, and a class to which it belongs.</sentence><sentence>The goal is to
+construct an effective classifier for categorizing these examples.</sentence><sentence>The ALP
+is formulated as a set-covering problem, a set-partitioning problem, and as
+a general 0-1 problem.</sentence><sentence>This enables an extnesive investigation to be
+carried out as to the relationships between rules and examples; "data" and
+"knowledge"; and attitudes regarding the "best" set of rules forming a rule
+base".</sentence></paragraph>
+
+<paragraph></paragraph>

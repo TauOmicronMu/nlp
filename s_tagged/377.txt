@@ -1,0 +1,7 @@
+<paragraph><sentence>
+October 9       How Effective is Automatic Program Parallelization?</sentence></paragraph>
+
+<paragraph><sentence>                David A. Padua,   Center for Supercomputing Research and Development
+ 	        University of Illinois at Urbana-Champaign
+		<stime>4:00</stime> p.m., Wean Hall 5403
+</sentence></paragraph>

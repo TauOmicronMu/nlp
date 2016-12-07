@@ -1,0 +1,39 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> SPEAKER: <speaker>Milind Tambe</speaker></sentence></paragraph>
+
+<paragraph><sentence> DATE: Friday Oct 4, 1991</sentence></paragraph>
+
+<paragraph><sentence> TIME: 12:00pm - 1:00pm</sentence></paragraph>
+
+<paragraph><sentence> Place:  3313 Doherty (Large Conf Room)</sentence></paragraph>
+
+<paragraph><sentence>        ELIMINATING COMBINATORICS FROM THE MATCH IN RULE-BASED SYSTEMS</sentence></paragraph>
+
+<paragraph><sentence>                                 <speaker>Milind Tambe</speaker></sentence></paragraph>
+
+<paragraph><sentence>                                   Abstract</sentence></paragraph>
+
+<paragraph><sentence>Eliminating combinatorics from the match in production systems  (or  rule-based
+systems)  is  important  for  various  reasons  like real-time performance, the
+utility issue in machine learning, parallel implementations and modeling  human
+cognition.</sentence><sentence>The goal of this work is to eliminate match combinatorics without
+sacrificing production system functionality.</sentence></paragraph>
+
+<paragraph><sentence>  Combinatorics arise in production match due to the ambiguity about which data
+items (or working memory elements) can actually match a production's condition.</sentence><sentence>In a production with multiple conditions, a cascading effect of such  ambiguity
+may  lead  to  an  exponential  match effort.</sentence><sentence>We have investigated a variety of
+approaches to eliminate match combinatorics, and have focused on the  following
+two that appear quite promising:</sentence></paragraph>
+
+<paragraph><sentence>   - The  unique-attribute  approach:  This approach restricts the working
+     memory representation and completely eliminates the ambiguity.</sentence></paragraph>
+
+<paragraph><sentence>   - The tokenless-match approach: This approach changes the match process
+     so  as to allow some local ambiguity, but avoids the cascading effect
+     that leads to combinatorics.</sentence></paragraph>
+
+<paragraph><sentence>  I  will  present  detailed  theoretical  and  experimental  analyses  of  the
+performance    improvements    possible   with   these   approaches   and   the
+representational tradeoffs involved in them.
+</sentence></paragraph>

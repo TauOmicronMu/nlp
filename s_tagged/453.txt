@@ -1,0 +1,18 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> REMINDER:</sente<speaker>n</speaker>ce></paragraph>
+
+<paragraph><sentence> 			MATHEMATICS COLLOQUIUM</sente<speaker>n</speaker>ce></paragraph>
+
+<paragraph><sentence> Speaker:  Professor N.G.</sentence><sentence>de Bruijn 
+ 	  Eindhoven University of Technology,
+           Eindhoven, The Netherlands</sente<speaker>n</speaker>ce></paragraph>
+
+<paragraph><sentence> Date:     Thursday, November 21</sente<speaker>n</speaker>ce></paragraph>
+
+<paragraph><sentence> Time:     <stime>10:30</stime> am</sente<speaker>n</speaker>ce></paragraph>
+
+<paragraph><sentence> Place:	  5409 Wean Hall</sente<speaker>n</speaker>ce></paragraph>
+
+<paragraph><sentence> Topic:   "Mathematical Theory of Quasicrystals"
+</sente<speaker>n</speaker>ce></paragraph>

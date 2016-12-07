@@ -1,0 +1,7 @@
+<paragraph><sentence>Ken Forbus of Northwestern University will give a seminar on </sentence></paragraph>
+
+<paragraph><sentence> "Articulate Virtual Laboratories for Engineering Education"</sentence></paragraph>
+
+<paragraph><sentence>tomorrow (Thursday) at 3pm in Wean 4625.</sentence><sentence>The abstract will be
+posted when available.
+</sentence></paragraph>

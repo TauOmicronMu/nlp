@@ -1,0 +1,28 @@
+<paragraph><sentence>
+RI SEMINAR</sentence></paragraph>
+
+<paragraph><sentence> WHEN:	Friday, Sept. 18, 1992; <stime>3:30 pm</stime> - <etime>5:00 pm</etime>
+	Refreshments will be served by 3:15 pm</sentence></paragraph>
+
+<paragraph><sentence> WHERE:	Baker Hall - Adamson Wing</sentence></paragraph>
+
+<paragraph><sentence> SPEAKER:	Dr.Ted Adelson-Associate Professor of Vision Science-
+     	Media Laboratory and the Dept.</sentence><sentence>of Brain and Cognitive
+ 	Science - MIT</sentence></paragraph>
+
+<paragraph><sentence> TITLE:	Elemental measurements in vision.</sentence></paragraph>
+
+<paragraph><sentence> ABSTRACT:	Posted Earlier</sentence></paragraph>
+
+<paragraph><sentence>Hosted by :	Hagen Schempf, x6884</sentence></paragraph>
+
+<paragraph><sentence>---
+****************|**************************|**************************
+*               |                          |                         *
+*Tim Meadows    |  Field Robotics Center   | Carnegie Mellon Univ.</sentence><sentence>*
+*               |                          |                         *
+*412-268-7085   |  Fax: 412-682-1793       | tmeadows@frc.ri.cmu.edu *
+*               |                          |                         *
+**********************************************************************</sentence></paragraph>
+
+<paragraph></paragraph>

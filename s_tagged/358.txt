@@ -1,0 +1,30 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> WHEN:   Friday, Jan 15, 1993; <stime>3:30 pm</stime> - <etime>5:00 pm</etime>
+        Refreshments will be served by 3:15 pm</sentence></paragraph>
+
+<paragraph><sentence> WHERE:  ADAMSON WING Auditorium in Baker Hall</sentence></paragraph>
+
+<paragraph><sentence> SPEAKER: <speaker>PAUL S</speaker>. HECKBERT, Computer Science Dept., Carnegie Mellon Univ.</sentence></paragraph>
+
+<paragraph><sentence> TITLE: FILTERS FOR IMAGE RESAMPLING</sentence></paragraph>
+
+<paragraph><sentence>A common problem in image processing is resampling a raster image.</sentence><sentence>This task crops up when removing distortions from satellite images and
+when performing texture mapping in computer graphics, for example.</sentence><sentence>Careful filtering must be done during resampling or the results will
+appear blocky or show aliasing.</sentence><sentence>Traditionally, most research in
+resampling has addressed special cases.</sentence><sentence>Often, the class of mappings
+is restricted to be affine (translation, rotation, and scaling), in
+which case the filter is space invariant.</sentence><sentence>Furthermore, filters are
+often designed for interpolation (upsampling) only or decimation
+(downsampling) only.</sentence></paragraph>
+
+<paragraph><sentence>In this talk, we develop a unified theory for image resampling filters,
+which subsumes previous methods for affine mappings, interpolation, and
+decimation.</sentence><sentence>The theory describes the space variant filter for
+resampling a multidimensional signal according to an arbitrary mapping
+without aliasing.</sentence><sentence>A simple, fast approximation technique employing
+elliptical Gaussian filters will be demonstrated.</sentence></paragraph>
+
+<paragraph><sentence>Refreshments Will be served by 3:15pm*</sentence></paragraph>
+
+<paragraph></paragraph>

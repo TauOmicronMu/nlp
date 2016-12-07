@@ -1,0 +1,24 @@
+<paragraph><sentence> Speaker:
+ <speaker>Ron P</speaker>. Loui
+ Deptartment of Computer Science
+ Washington University, St. Louis</sentence></paragraph>
+
+<paragraph><sentence>September 21, 1993
+<stime>3:30</stime> p.m.
+4623 Wean Hall
+ARGUMENT AND ARBITRATION GAMES</sentence></paragraph>
+
+<paragraph><sentence>We begin with two points about modeling reasoning that Herbert Simon
+and Nicholas Rescher made well, but which were lost in the AI shuffle:
+1) rational belief can be constructed by the right kind of
+resource-bounded process; 2) dialectic is one of the right kinds of
+process.</sentence><sentence>A protocol for disputation is essentially a model of an
+automated reasoner's search procedure.</sentence></paragraph>
+
+<paragraph><sentence>We describe programs and card games which model case-based legal
+argument and reasoned settlement.</sentence></paragraph>
+
+<paragraph><sentence> Host: Bob Carpenter 
+For Further Details and appointments contact: (carp@lcl.cmu.edu)
+ phone: x8-8043 or (fax: 268-1440)
+</sentence></paragraph>

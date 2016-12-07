@@ -1,0 +1,17 @@
+<paragraph><sentence>
+                       RI SEMINAR</sentence></paragraph>
+
+<paragraph><sentence> WHEN:     Friday, March 3, 1995; <stime>3:30 pm</stime> - <etime>5:00 pm</etime>
+          Refreshments will be served starting at 3:15 pm.</sentence></paragraph>
+
+<paragraph><sentence> WHERE:    ADAMSON WING Auditorium in Baker Hall</sentence></paragraph>
+
+<paragraph><sentence> SPEAKER:  <speaker>Paolo Dario</speaker>
+ 	  Professor and Director
+ 	  ARTS Lab
+ 	  University of Pisa</sentence></paragraph>
+
+<paragraph><sentence> TITLE:	  Robots for the Assistance to the Disabled and the Elderly:
+ 	  Current Status and Perspectives</sentence></paragraph>
+
+<paragraph></paragraph>

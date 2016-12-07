@@ -1,0 +1,35 @@
+<paragraph><sentence>
+			      GRAPHICS SEMINAR</sentence></paragraph>
+
+<paragraph><sentence>			    Wednesday November 11
+ 		      Reception: <stime>2:40</stime>, Talk: 3:00-4:00
+ 			  Baker Hall, Adamson Wing</sentence></paragraph>
+
+<paragraph><sentence>			  Computer Graphics Snacks</sentence></paragraph>
+
+<paragraph><sentence>			       Paul Haeberli
+			   Silicon Graphics Inc</sentence></paragraph>
+
+<paragraph><sentence>    Leep Projection  Cheezy Stereo  Reflection Maps Six  Point Perspective
+    Abstract Representations  Font Painting & Mesh Warping  Image Cloning 
+        Mutation & Selection  Parametric Design  Tiny Pix  X-Ray Views  
+    			Marbled Paper  Digital Lighting</sentence></paragraph>
+
+<paragraph><sentence>	    As an alternative to complex and fattening topics in
+	    computer graphics I'll show and talk about several 
+	    little projects I've been exploring over the last few 
+	    years.</sentence><sentence>We'll look at techniques for making hidden 
+	    line drawings of geometric objects.</sentence><sentence>I'll talk about
+	    making and using reflection maps, a simple paint 
+	    program for typeface design, and various image warping 
+	    and image enhancement hacks.</sentence><sentence>I'll also show how simple 
+	    filtering of mouse positions can help make the mouse 
+	    more useable and fun as an input device, techniques for 
+	    creating pictures with 6 point perspective, and a bunch 
+	    of other half-baked stuff.</sentence></paragraph>
+
+<paragraph><sentence> host: Paul Heckbert, ph@cs.cmu.edu, 268-7899</sentence></paragraph>
+
+<paragraph><sentence>For appointments with the speaker on Thursday Nov. 12, email
+Phyllis.Pomerantz@cs.cmu.edu or call her at 268-7897.
+</sentence></paragraph>

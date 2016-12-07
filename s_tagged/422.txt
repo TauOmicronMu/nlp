@@ -1,0 +1,11 @@
+<paragraph><sentence>
+	Computer Systems/Pittsburgh Supercomputing Center Seminar</sentence></paragraph>
+
+<paragraph><sentence>	Virtual Memory Mapped Network Interface for SHRIMP multicomputer</sentence></paragraph>
+
+<paragraph><sentence>	    			Kai Li
+			Princeton University</sentence></paragraph>
+
+<paragraph><sentence>	Friday, Dec 3rd, 1993 at <stime>4:00</stime> p.m. in WeH 5409</sentence></paragraph>
+
+<paragraph></paragraph>

@@ -1,0 +1,8 @@
+<paragraph><sentence>
+This talk is still scheduled for today but no abstract has been received.  </sentence></paragraph>
+
+<paragraph><sentence>December 4	The Cray Research Massively Parallel Product and Strategy
+		Mick Dungworth, Cray Research, Inc.</sentence></paragraph>
+
+<paragraph><sentence>		4 p.m., 3rd Floor Conference Room, Mellon Institute Building
+</sentence></paragraph>

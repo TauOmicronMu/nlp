@@ -1,0 +1,14 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> REMINDER:</sentence></paragraph>
+
+<paragraph><sentence> Speaker:   Steven Skiena
+            Department of Computer Science
+            State University of New York, Stony Brook</sentence></paragraph>
+
+<paragraph><sentence> Date:	   Tuesday, January 14
+ Time:      <stime>1:30</stime> pm
+ Place:     Wean Hall 4634</sentence></paragraph>
+
+<paragraph><sentence> Topic:     Algorithms for Square Roots of Graphs
+</sentence></paragraph>

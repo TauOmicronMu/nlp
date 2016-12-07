@@ -1,0 +1,29 @@
+<paragraph></paragraph>
+
+<paragraph><sentence> SPEAKER:  D. Navinchandra
+           Center for Integrated Manufacturing <speaker>D</speaker>escision Systems</sentence></paragraph>
+
+<paragraph><sentence> DATE:  Fri<speaker>d</speaker>ay September 20, 1991</sentence></paragraph>
+
+<paragraph><sentence> TIME:  2:00pm - 3:00pm</sentence></paragraph>
+
+<paragraph><sentence> Place: 3313 <speaker>D</speaker>oherty Hall</sentence></paragraph>
+
+<paragraph><sentence> TITLE:  Product <speaker>D</speaker>esign for Environmental Compatibility</sentence></paragraph>
+
+<paragraph><sentence>There is a growing interest in making products environmentally more
+compatible.</sentence><sentence>While there is a need to make products and processes less toxic,
+to increase recyclability, and to reduce waste; we have to try to achieve
+environmental friendliness without compromising product quality.</sentence><sentence>This
+approach to design has come to be called @i(Green Engineering Design).</sentence><sentence>The
+aim is to identify, develop, and exploit new technologies that can bolster
+productivity without costing the environment.</sentence><sentence>The idea is to inject concerns
+about environmental friendliness into the design process, where the assessment
+of environmental friendliness is based on a life-cycle view of the product.</sentence><sentence>This includes the product's manufacturing process, distribution, use, and
+final <speaker>d</speaker>isposal.</sentence></paragraph>
+
+<paragraph><sentence>We will examine a two part approach to green engineering: (1) the development
+of special @i(green indicators) - measures of environmental
+compatibility, and (2) tools that use the green indicators to help designers
+assess, compare, and make design <speaker>d</speaker>ecisions.
+</sentence></paragraph>

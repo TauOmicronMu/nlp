@@ -1,0 +1,16 @@
+<paragraph><sentence>
+Homecoming celebrations begin today!</sentence><sentence>Welcome back alumni!</sentence></paragraph>
+
+<paragraph><sentence>What better way to spend a slightly rainy afternoon than with a 
+stimulating lecture.</sentence><sentence>As part of the weekend programming, SCS is hosting
+a homecoming lecture today (Friday) for alumni and other interested
+individuals.</sentence><sentence>The featured speaker is:</sentence></paragraph>
+
+<paragraph><sentence>			DOUG TYGAR
+		     Associate Professor
+	"THE RISE AND FALL OF THE DATA ENCRYPTION STANDARD"
+		   Friday, 16 October 1992
+ 			  <stime>3:00</stime> pm
+			Wean 7500
+Enjoy....
+</sentence></paragraph>
