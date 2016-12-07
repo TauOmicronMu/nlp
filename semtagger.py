@@ -3,7 +3,7 @@ import nltk
 import itertools
 import wsjtagger
 
-filenames = [311]
+filenames = [310]
 
 def intersperse(iterable, delimiter):
     it = iter(iterable)
@@ -18,6 +18,8 @@ def dropWhile(s, f):
     return s
 
 def keepWhile(s, f):
+    if not s:
+        return ""
     if f(s[0]):
         return s[0] + keepWhile(s[1:], f)
     return ""
@@ -28,15 +30,15 @@ punct = "!#$%&()*+,-.:;?@[\]^_`{|}~"
 
 for file in filenames:
 
-    data = ""
-    split_data = []
-    header = ""
-    abstract_word = ""
-    abstract = ""
-    stime = ""
-    etime = ""
-    speaker = ""
-    speaker_title = ""
+    data = None
+    split_data = None
+    header = None
+    abstract_word = None
+    abstract = None
+    stime = None
+    etime = None
+    speaker = None
+    speaker_title = None
 
     with open("s_untagged/%s.txt"%file, "r") as f:
         data = f.read()
@@ -59,7 +61,10 @@ for file in filenames:
     paragraphs = abstract.split('\n\n')
 
     # For each paragraph, tokenise them using the nltk.sent_tokenize() function.
-    sentences = [nltk.sent_tokenize(s) for s in paragraphs][1:]
+    for i in range(len(paragraphs)):
+        paragraphs[i] = nltk.sent_tokenize(paragraphs[i])
+    #TODO: MAKE SURE THIS ACTUALLY WORKS FOR SENTENCES ^
+    #TODO: TOM THIS IS SUPER IMPORTANT... DO THIS!
 
     header_lines = header.split("\n")
 
@@ -86,18 +91,22 @@ for file in filenames:
     speakers = get_matches(header_lines, speaker_pattern)
     if(speakers):
         speaker = speakers[0][0]
+   
+    if(speaker):
+        # Tag the speaker section with NER tags to and check if there's part contained within PERSON tags
+        speaker_tag = wsjtagger.tag_phrase(speaker) 
+        person_matches = get_matches(speaker_tag, person_pattern)
+        if(person_matches):
+            speaker = person_matches[0]
+    
+        speaker = keepWhile(dropWhile(speaker, lambda x: x == " "), lambda x: x not in punct)
 
-    # Tag the speaker section with NER tags to and check if there's part contained within PERSON tags
-    speaker_tag = wsjtagger.tag_phrase(speaker) 
-    person_matches = get_matches(speaker_tag, person_pattern)
-    if(person_matches):
-        speaker = person_matches[0]
-
-    speaker = keepWhile(dropWhile(speaker, lambda x: x == " "), lambda x: x not in punct)
-
-    split_speaker = speaker.split(" ")
-    for title in titles:
-        if title == split_speaker[0]: # If there's a title strip it from the speaker.
-            speaker = "".join(intersperse(split_speaker[1:], " ")) 
+        split_speaker = speaker.split(" ")
+        for title in titles:
+            if title == split_speaker[0]: # If there's a title strip it from the speaker.
+                speaker = "".join(intersperse(split_speaker[1:], " ")) 
 
     # Now we've got the data that we wanted, let's tag and reconstruct the email.
+    print(paragraphs)
+
+
