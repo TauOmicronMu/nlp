@@ -1,0 +1,4 @@
+overall accuracy: 26.993166287015946
+speaker accuracy: 28.08641975308642
+start time accuracy: 15.240641711229946
+end time accuracy: 49.44444444444444

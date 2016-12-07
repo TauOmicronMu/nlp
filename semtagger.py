@@ -4,6 +4,7 @@ import nltk.data
 import itertools
 import wsjtagger
 
+# Just ignore the ones with the \t tab issue...
 filenames = [n for n in range(301,485)]
 bad_filenames= [352, 357, 364, 379]
 for file in bad_filenames:
@@ -61,7 +62,8 @@ for file in filenames:
                 header = "".join(intersperse(lines[:pos], "\n"))
                 abstract_word = "".join(lines[pos])
                 abstract = "".join(intersperse(lines[pos+1:], "\n"))
-    
+   
+     
     # Take the abstract and first split it into paragraphs by splitting on '\n\n'
     paragraphs = abstract.split('\n\n')
 
