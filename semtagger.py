@@ -4,7 +4,10 @@ import nltk.data
 import itertools
 import wsjtagger
 
-filenames = [310]
+filenames = [n for n in range(301,485)]
+bad_filenames= [352, 357, 364, 379]
+for file in bad_filenames:
+    filenames.remove(file)
 
 def intersperse(iterable, delimiter):
     it = iter(iterable)
@@ -30,6 +33,7 @@ person_pattern = re.compile("<ENAMEX\sTYPE='PERSON'>(.*?)</ENAMEX>")
 punct = "!#$%&()*+,-.:;?@[\]^_`{|}~"
 
 for file in filenames:
+    print(file)
 
     data = None
     split_data = None
@@ -48,7 +52,7 @@ for file in filenames:
         # Split on newlines
         lines = data.split("\n")
         # Look through to find the start of the abstract   
-        abstract_pattern = re.compile("[Aa]bstract\:\s+")
+        abstract_pattern = re.compile("[Aa]bstract\:.*?$")
         for line in lines:
             matches = abstract_pattern.findall(line)
             if matches != []: # Yay, we found the abstract!
@@ -138,4 +142,8 @@ for file in filenames:
 
     # Now reconstruct the email one final time
     tagged_data = "".join(intersperse(lines, "\n\n"))
-    print(tagged_data)
+    
+    # Write to the tagged data file.
+    with open("s_tagged/%s.txt"%file, "w") as f:
+        f.write(tagged_data)
+
