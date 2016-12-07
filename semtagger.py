@@ -74,18 +74,20 @@ for file in filenames:
             matches.append(pattern.findall(line))
         return [item for x in matches if x != [] for item in x]
 
-    time_line_pattern = re.compile(r"[Tt]ime\:([\W\w]*)")
+    time_line_pattern = re.compile(r"[TtWw][IiHh][MmEe][EeNn]\:([\W\w]*)")
     times = get_matches(header_lines, time_line_pattern)    
     if(times): # If the header contains a 'Time' line
         # If our time is in the format '(h)h:mm - (h)h:mm' split it into start time and end time
         time_pattern = re.compile(r"([0-9]{1,2}\:?([0-9]{2})?(([Aa]|[Pp])[Mm])?)")
         # If this matches, it is in the form (1) - (5) ---> i.e. the 1st match is the start time, the 5th is the end time.
-        dbl_time_pattern = re.compile(r"([0-9]{1,2}\:?([0-9]{2})?(([Aa]|[Pp])[Mm])?)\W*-\W*([0-9]{1,2}\:?([0-9]{2})?(([Aa]|[Pp])[Mm])?)")
+        dbl_time_pattern = re.compile(r"([0-9]{1,2}\:?([0-9]{2})?\s*(([Aa]|[Pp])[Mm])?)\W*-\W*([0-9]{1,2}\:?([0-9]{2})?\s*(([Aa]|[Pp])[Mm])?)")
         dbl_time_matches = get_matches(times, dbl_time_pattern)
         if(dbl_time_matches):
             stime = dbl_time_matches[0][0] 
             etime = dbl_time_matches[0][4]
-
+        else:
+            time_matches = get_matches(times, time_pattern)
+            stime = time_matches[0][0]
     speaker_pattern = re.compile("[Ww][Hh][Oo]\:([\W\w]*)|[Ss][Pp][Ee][Aa][Kk][Ee][Rr]\:([\W\w]*)")
     speakers = get_matches(header_lines, speaker_pattern)
     if(speakers):
@@ -111,4 +113,16 @@ for file in filenames:
         for s in p: 
             p[p.index(s)] = "<sentence>%s</sentence>"%s
         paragraphs_sentences[paragraphs_sentences.index(p)] = "<paragraph>%s</paragraph>" %("".join(p))
-    ps_tagged = "".join(intersperse(paragraphs_sentences, "\n"))        
+    ps_tagged = "".join(intersperse(paragraphs_sentences, "\n"))       
+    
+    print(stime)
+    print(etime)
+    print(speaker)
+ 
+    lines = ps_tagged.split("\n")
+    if(stime):
+        stime_pattern = re.compile("([\W\w]*)(%s)([\W\w]*)"%stime, re.MULTILINE)
+        for line in lines:
+            print(line)
+            stime_matches = stime_pattern.match(line)
+            print(stime_matches)
