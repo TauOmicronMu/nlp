@@ -188,19 +188,19 @@ def tag_phrase(data):
     tagged_data = ntag(chunked_data)
     return tagged_data
 
-'''
-for file in filenames:
-    if(file != "wsj_1296.txt"): # This one breaks stuff so just ignore it for now.
-        print(file)
-        fdata = ""
-        with open("wsj_untagged/"+file, "r") as f:
-            fdata = f.read() # Grab the contents of the file
-        pos_tagged_fdata = nltk.pos_tag(re.findall(r'\w+', fdata)) # pos-tag the contents
-        chunked_data = chunk(pos_tagged_fdata) # Chunk the pos-tagged data
-        tagged_data = ntag(chunked_data) # Tag the chunked data
-        with open("wsj_tagged/"+file, "w") as f:
-            f.write(" ".join(tagged_data)) # Append the tagged data to the output file.
-    else:
-        with open("wsj_tagged/"+file, "w") as f:
-            f.write(open("wsj_untagged/"+file,"r").read())
-'''
+
+def tag_files():
+    for file in filenames:
+        if(file != "wsj_1296.txt"): # This one breaks stuff so just ignore it for now.
+            print(file)
+            fdata = ""
+            with open("wsj_untagged/"+file, "r") as f:
+                fdata = f.read() # Grab the contents of the file
+            pos_tagged_fdata = nltk.pos_tag(re.findall(r'\w+', fdata)) # pos-tag the contents
+            chunked_data = chunk(pos_tagged_fdata) # Chunk the pos-tagged data
+            tagged_data = ntag(chunked_data) # Tag the chunked data
+            with open("wsj_tagged/"+file, "w") as f:
+                f.write(" ".join(tagged_data)) # Append the tagged data to the output file.
+        else:
+            with open("wsj_tagged/"+file, "w") as f:
+                f.write(open("wsj_untagged/"+file,"r").read())

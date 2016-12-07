@@ -1,5 +1,6 @@
 import re
 import nltk
+import nltk.data
 import itertools
 import wsjtagger
 
@@ -60,11 +61,9 @@ for file in filenames:
     # Take the abstract and first split it into paragraphs by splitting on '\n\n'
     paragraphs = abstract.split('\n\n')
 
-    # For each paragraph, tokenise them using the nltk.sent_tokenize() function.
-    for i in range(len(paragraphs)):
-        paragraphs[i] = nltk.sent_tokenize(paragraphs[i])
-    #TODO: MAKE SURE THIS ACTUALLY WORKS FOR SENTENCES ^
-    #TODO: TOM THIS IS SUPER IMPORTANT... DO THIS!
+    # For each paragraph, tokenise them into sentences
+    sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
+    paragraphs_sentences = list(map(sent_detector.tokenize, paragraphs))
 
     header_lines = header.split("\n")
 
@@ -107,6 +106,9 @@ for file in filenames:
                 speaker = "".join(intersperse(split_speaker[1:], " ")) 
 
     # Now we've got the data that we wanted, let's tag and reconstruct the email.
-    print(paragraphs)
-
-
+    # Tag the sentences, and then the paragraphs.
+    for p in paragraphs_sentences:
+        for s in p: 
+            p[p.index(s)] = "<sentence>%s</sentence>"%s
+        paragraphs_sentences[paragraphs_sentences.index(p)] = "<paragraph>%s</paragraph>" %("".join(p))
+    ps_tagged = "".join(intersperse(paragraphs_sentences, "\n"))        
