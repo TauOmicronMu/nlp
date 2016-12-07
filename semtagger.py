@@ -53,7 +53,7 @@ for file in filenames:
         # Split on newlines
         lines = data.split("\n")
         # Look through to find the start of the abstract   
-        abstract_pattern = re.compile("[Aa]bstract\:.*?$")
+        abstract_pattern = re.compile("[Aa]bstract\:\s*")
         for line in lines:
             matches = abstract_pattern.findall(line)
             if matches != []: # Yay, we found the abstract!
