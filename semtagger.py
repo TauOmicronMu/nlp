@@ -113,16 +113,29 @@ for file in filenames:
         for s in p: 
             p[p.index(s)] = "<sentence>%s</sentence>"%s
         paragraphs_sentences[paragraphs_sentences.index(p)] = "<paragraph>%s</paragraph>" %("".join(p))
-    ps_tagged = "".join(intersperse(paragraphs_sentences, "\n"))       
-    
-    print(stime)
-    print(etime)
-    print(speaker)
- 
-    lines = ps_tagged.split("\n")
-    if(stime):
-        stime_pattern = re.compile("([\W\w]*)(%s)([\W\w]*)"%stime, re.MULTILINE)
+
+    lines = paragraphs_sentences
+  
+    # TODO: Refactor this into a single function 
+    if(stime): # If we have a start time, tag it in the data
+        stime_pattern = re.compile("([\W\w]*)(%s)([\W\w]*)"%stime, re.IGNORECASE)
         for line in lines:
-            print(line)
-            stime_matches = stime_pattern.match(line)
-            print(stime_matches)
+            stime_matches = stime_pattern.findall(line)
+            if(stime_matches):
+                lines[lines.index(line)] = "%s<stime>%s</stime>%s"%stime_matches[0]
+    if(etime): # If we have an end time, tag it in the data
+        etime_pattern = re.compile("([\W\w]*)(%s)([\W\w]*)"%etime, re.IGNORECASE)
+        for line in lines:
+            etime_matches = etime_pattern.findall(line)
+            if(etime_matches):
+                lines[lines.index(line)] = "%s<etime>%s</etime>%s"%etime_matches[0]
+    if(speaker): # If we have a speaker, tag them in the data
+        speaker_pattern = re.compile("([\W\w]*)(%s)([\W\w]*)"%speaker, re.IGNORECASE)
+        for line in lines:
+            speaker_matches = speaker_pattern.findall(line)
+            if(speaker_matches):
+                lines[lines.index(line)] = "%s<speaker>%s</speaker>%s"%speaker_matches[0]
+
+    # Now reconstruct the email one final time
+    tagged_data = "".join(intersperse(lines, "\n\n"))
+    print(tagged_data)
